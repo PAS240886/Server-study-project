@@ -26,7 +26,6 @@ app.get("/", function(req, res) {
   for (let i = 0; i<posts.length; i++) {
     console.log(posts[i].title)
   }
-  console.log(posts[i].title);
 });
 app.get("/about", function(req, res) {
   res.render ("about", {aboutContent:aboutContent});
