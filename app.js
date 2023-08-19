@@ -21,11 +21,13 @@ let postsLength=posts.length;
 app.get("/", function(req, res) {
   res.render ("home", {
     startingContent:homeStartingContent, 
-    posts: posts
+    posts: posts,
   });
-  for (let i = 0; i<posts.length; i++) {
-    console.log(posts[i].title)
-  }
+  //  posts.forEach (function(postElement) {
+  //  });
+  //   for (let i = 0; i<posts.length; i++) {
+  //   console.log(posts[i].title)
+  // }
 });
 app.get("/about", function(req, res) {
   res.render ("about", {aboutContent:aboutContent});
@@ -45,7 +47,17 @@ app.post("/compose", function(req, res) {
   res.redirect("/");
 });
 
+app.get("/posts/:postName", function (req, res) {
+  const nameOfThePost = req.params.postName;
 
+  posts.forEach(function(post) {
+    const titleOfThePost = post.title;
+
+  if (nameOfThePost === titleOfThePost) {
+    console.log ("Match found");
+  };
+  });
+});
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
